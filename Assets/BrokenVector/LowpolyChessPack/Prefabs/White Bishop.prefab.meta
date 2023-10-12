@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: cd05c23b470229c44a8d53d6e86225f6
+labels:
+- chess
+- board
+- boardgame
+- game
+- chessboard
+- Bishop
+timeCreated: 1462534798
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50405
+  packageName: Low Poly Chess Pack
+  packageVersion: 1.2
+  assetPath: Assets/BrokenVector/LowpolyChessPack/Prefabs/White Bishop.prefab
+  uploadId: 253857

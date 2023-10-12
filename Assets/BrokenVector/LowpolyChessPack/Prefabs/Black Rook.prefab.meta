@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9d3e9c36668dcfe44b524760a4c3a3b5
+labels:
+- chess
+- board
+- boardgame
+- game
+- chessboard
+- Rook
+timeCreated: 1462534604
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50405
+  packageName: Low Poly Chess Pack
+  packageVersion: 1.2
+  assetPath: Assets/BrokenVector/LowpolyChessPack/Prefabs/Black Rook.prefab
+  uploadId: 253857

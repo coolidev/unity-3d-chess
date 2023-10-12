@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 31270e9f38d5e7a448ae050b9633fce3
+labels:
+- chess
+- board
+- boardgame
+- game
+- chessboard
+timeCreated: 1462534583
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50405
+  packageName: Low Poly Chess Pack
+  packageVersion: 1.2
+  assetPath: Assets/BrokenVector/LowpolyChessPack/Prefabs/Board.prefab
+  uploadId: 253857

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7248632fb471af143947a88a47eae959
+labels:
+- chess
+- board
+- boardgame
+- game
+- chessboard
+- Knight
+timeCreated: 1462534794
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50405
+  packageName: Low Poly Chess Pack
+  packageVersion: 1.2
+  assetPath: Assets/BrokenVector/LowpolyChessPack/Prefabs/White Knight.prefab
+  uploadId: 253857

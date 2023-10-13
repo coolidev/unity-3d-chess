@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class Chessboard : MonoBehaviour
     [SerializeField] private float tileSize = 1.5f;
     [SerializeField] private float yOffset = 0.005f;
     [SerializeField] private Vector3 boardCenter = Vector3.zero;
+    [SerializeField] private float deathSize = 0.5f;
+    [SerializeField] private float deathSpacing = 0.7f;
+    [SerializeField] private float deathYOffset = 0.25f;
+    [SerializeField] private float dragOffset = 3.3f;
 
     [Header("Prefabs & Materials")]
     [SerializeField] private GameObject[] prefabs;
@@ -16,6 +21,8 @@ public class Chessboard : MonoBehaviour
     // Logic
     private ChessPiece[,] chessPieces;
     private ChessPiece currentlyDragging;
+    private List<ChessPiece> deadWhites = new List<ChessPiece> ();
+    private List<ChessPiece> deadBlacks = new List<ChessPiece> ();
     private const int TILE_COUNT_X = 8;
     private const int TILE_COUNT_Y = 8;
     private GameObject[,] tiles;
@@ -102,6 +109,15 @@ public class Chessboard : MonoBehaviour
                 currentlyDragging.SetPosition(GetTileCenter(currentlyDragging.currentX, currentlyDragging.currentY));
                 currentlyDragging = null;
             }
+        }
+
+        // If we're dragging a piece
+        if (currentlyDragging)
+        {
+            Plane horizonPlane = new Plane(Vector3.up, Vector3.up * yOffset);
+            float distance = 0.0f;
+            if (horizonPlane.Raycast(ray, out distance))
+                currentlyDragging.SetPosition(ray.GetPoint(distance) + Vector3.up * dragOffset);
         }
     }
 
@@ -217,6 +233,26 @@ public class Chessboard : MonoBehaviour
 
             if (cp.team == ocp.team)
                 return false;
+
+            // If it's the enemy team
+            if (ocp.team == 0)
+            {
+                deadWhites.Add(ocp);
+                ocp.SetScale(Vector3.one * deathSize);
+                ocp.SetPosition(new Vector3(8 * tileSize, deathYOffset, -1 * tileSize)
+                    - bounds
+                    + new Vector3(tileSize / 2, 0, tileSize / 2)
+                    + (Vector3.forward * deathSpacing) * deadWhites.Count);
+            }
+            else
+            {
+                deadBlacks.Add(ocp);
+                ocp.SetScale(Vector3.one * deathSize);
+                ocp.SetPosition(new Vector3(-1 * tileSize, deathYOffset, 8 * tileSize)
+                    - bounds
+                    + new Vector3(tileSize / 2, 0, tileSize / 2)
+                    + (Vector3.back * deathSpacing) * deadBlacks.Count);
+            }
         }
 
         chessPieces[x, y] = cp;

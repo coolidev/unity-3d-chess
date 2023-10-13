@@ -141,6 +141,10 @@ MonoBehaviour:
   tileSize: 1.5
   yOffset: 0.005
   boardCenter: {x: 0, y: 0, z: 0}
+  deathSize: 0.5
+  deathSpacing: 0.7
+  deathYOffset: 0.25
+  dragOffset: 3.3
   prefabs:
   - {fileID: 297742560265400453, guid: 71b24a80eb177624da05b706592517f5, type: 3}
   - {fileID: 4052851127827869272, guid: 9db5aff661b25bd40aa477255bcd2b02, type: 3}

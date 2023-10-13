@@ -94,7 +94,7 @@ public class Chessboard : MonoBehaviour
                         // Get a list of where I can go, highlight tiles as well
                         availableMoves = currentlyDragging.GetAvailableMoves(ref chessPieces, TILE_COUNT_X, TILE_COUNT_Y);
                         // Get a list of special moves as well
-                        specialMove = currentlyDragging.GetSpecialMove(ref chessPieces, ref moveList, ref availableMoves);
+                        specialMove = currentlyDragging.GetSpecialMoves(ref chessPieces, ref moveList, ref availableMoves);
 
                         HighlightTiles();
                     }
@@ -336,6 +336,49 @@ public class Chessboard : MonoBehaviour
                             + (Vector3.back * deathSpacing) * deadBlacks.Count);
                     }
                     chessPieces[enemyPawn.currentX, enemyPawn.currentY] = null;
+                }
+            }
+        }
+
+        if (specialMove == SpecialMove.Castling)
+        {
+            Vector2Int[] lastMove = moveList[moveList.Count - 1];
+
+            // Left Rook
+            if (lastMove[1].x == 2)
+            {
+                if (lastMove[1].y == 0) // White side
+                {
+                    ChessPiece rook = chessPieces[0, 0];
+                    chessPieces[3, 0] = rook;
+                    PositionSinglePiece(3, 0);
+                    chessPieces[0, 0] = null;
+                }
+                else if (lastMove[1].y == 7) // Black side
+                {
+                    ChessPiece rook = chessPieces[0, 7];
+                    chessPieces[3, 7] = rook;
+                    PositionSinglePiece(3, 7);
+                    chessPieces[0, 7] = null;
+                }
+            }
+
+            // Right Rook
+            else if (lastMove[1].x == 6)
+            {
+                if (lastMove[1].y == 0) // White side
+                {
+                    ChessPiece rook = chessPieces[7, 0];
+                    chessPieces[5, 0] = rook;
+                    PositionSinglePiece(5, 0);
+                    chessPieces[7, 0] = null;
+                }
+                else if (lastMove[1].y == 7) // Black side
+                {
+                    ChessPiece rook = chessPieces[7, 7];
+                    chessPieces[5, 7] = rook;
+                    PositionSinglePiece(5, 7);
+                    chessPieces[7, 7] = null;
                 }
             }
         }
